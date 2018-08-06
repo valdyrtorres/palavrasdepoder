@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/quoteHolder"
         android:text="Texto de amostra"
         android:gravity="center"
         android:textSize="26sp"
@@ -14,6 +15,7 @@
         android:layout_height="match_parent" />
 
     <TextView
+        android:id="@+id/authorHolder"
         android:background="@color/colorPrimary"
         android:textSize="20sp"
         android:gravity="center"

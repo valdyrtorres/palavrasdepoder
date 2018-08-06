@@ -8,6 +8,7 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ArrayList<Quote> list = new ArrayList<>();
 
         AssetManager manager = getAssets();
         try {
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
                 String quote = temp.split("[|]")[0];
                 String author = temp.split("[|]")[1];
                 Log.d("MainActivity", quote + "---by " + author);
+
+                Quote qt = new Quote(quote, author);
             }
 
         } catch (IOException e) {
@@ -34,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ViewPager viewPager = findViewById(R.id.viewpager);
+        //QuotePageAdapter adapter = new QuotePageAdapter()
+
+
 
     }
 }
