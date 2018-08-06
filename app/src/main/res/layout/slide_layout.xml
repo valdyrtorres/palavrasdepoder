@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Texto de amostra"
+        android:gravity="center"
+        android:textSize="26sp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:background="@color/colorPrimary"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="Nome do autor"
+        android:textColor="@color/pureWhite"
+        android:layout_weight="7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>
