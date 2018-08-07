@@ -34,7 +34,13 @@ public class QuotePageAdapter extends PagerAdapter{
         quote.setText(object.getQuote());
         author.setText(object.getAuthor());
 
+        container.addView(layout);
         return layout;
+    }
+
+    @Override
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+        container.removeView((View) object);
     }
 
     @Override

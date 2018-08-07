@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("MainActivity", quote + "---by " + author);
 
                 Quote qt = new Quote(quote, author);
+                list.add(qt);
             }
 
         } catch (IOException e) {
@@ -39,9 +40,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ViewPager viewPager = findViewById(R.id.viewpager);
-        //QuotePageAdapter adapter = new QuotePageAdapter()
-
-
+        QuotePageAdapter adapter = new QuotePageAdapter(list,this);
+        viewPager.setAdapter(adapter);
 
     }
 }
