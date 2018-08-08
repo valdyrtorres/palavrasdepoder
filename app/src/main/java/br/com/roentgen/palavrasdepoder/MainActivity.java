@@ -27,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
             while(scn.hasNext()) {
                 String temp = scn.nextLine();
-                String quote = temp.split("[|]")[0];
-                String author = temp.split("[|]")[1];
+                int quoteID = Integer.parseInt(temp.split("[|]")[0]);
+                String quote = temp.split("[|]")[1];
+                String author = temp.split("[|]")[2];
                 Log.d("MainActivity", quote + "---by " + author);
 
                 Quote qt = new Quote(quote, author);
