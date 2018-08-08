@@ -1,11 +1,13 @@
 package br.com.roentgen.palavrasdepoder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,6 +36,19 @@ public class QuotePageAdapter extends PagerAdapter{
         quote.setText(object.getQuote());
         author.setText(object.getAuthor());
 
+        ImageButton btn = layout.findViewById(R.id.shareButton);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String toShare = object.getQuote() + " by " + object.getAuthor() + " send using Palavras de Poder";
+
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, toShare);
+                sendIntent.setType("text/plain");
+                context.startActivity(sendIntent);
+            }
+        });
         container.addView(layout);
         return layout;
     }
