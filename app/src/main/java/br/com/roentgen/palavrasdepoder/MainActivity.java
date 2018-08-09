@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 String author = temp.split("[|]")[2];
                 Log.d("MainActivity", quote + "---by " + author);
 
-                Quote qt = new Quote(quote, author);
+                Quote qt = new Quote(quoteID, quote, author);
                 list.add(qt);
             }
 
