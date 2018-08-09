@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -62,16 +63,36 @@ public class QuotePageAdapter extends PagerAdapter{
             @Override
             public void onClick(View view) {
                 try {
+                    Boolean isAlreadyLiked = false;
+                    Scanner scanner = new Scanner(context.openFileInput("likedQuotes.txt" ));
+
+                    while (scanner.hasNext()) {
+                        Log.d("QuotePagerAdapter", scanner.nextLine());
+                        int id = Integer.parseInt(scanner.nextLine());
+
+                        if(id == object.getId())
+                            isAlreadyLiked = true;
+                    }
+
+                    if(isAlreadyLiked) {
+                        Toast.makeText(context,"This quote is already liked :-)", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     FileOutputStream fout = context.openFileOutput("likedQuotes.txt", MODE_APPEND);
                     PrintWriter printWriter = new PrintWriter(fout, true);
                     printWriter.println(object.getId());
                     printWriter.close();
 
+                    Toast.makeText(context, "Quote Added to Liked List", Toast.LENGTH_SHORT).show();
+
+                    /*
                     Scanner scanner = new Scanner(context.openFileInput("likedQuotes.txt" ));
 
                     while (scanner.hasNext()) {
                         Log.d("QuotePagerAdapter", scanner.nextLine());
                     }
+                    */
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
